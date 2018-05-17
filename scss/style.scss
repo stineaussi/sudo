@@ -11,10 +11,11 @@ html, body, p , ul{
   body {
     font: 100% $font-stack;
     color: $primary-color;
-  
   }
   header{
       padding:$space*2 0 $space;
+      width: $width*.9;
+      margin: 0 auto;
   }
   ul {
     list-style: none;
@@ -27,20 +28,58 @@ html, body, p , ul{
             color: $secondary-color;
             background: $primary-color;
             padding: $space/4 $space/2;
+        &:hover{
+                transition: 1s;
+                background: $secondary-color;
+            }
         }
     }
 }
 
-article {
-    background: grayscale($primary-color);
-    color: $secondary-color;
-    padding: $space/2;
-}
+
 main {
     width: $width*.9;
     margin: 0 auto;
-    background: lighten($secondary-color, 10%);
+    background: $primary-color;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: $space/2;
+
+    article {
+        background: grayscale($primary-color);
+        color: $secondary-color;
+        padding: $space/2;
+        &::first-letter{
+            font-size: 150%;
+        }
+        &:first-child{
+            background: #fff;
+        }
+        &:last-child{
+            background: #fff;
+        }
+        &:nth-child(4n+1){
+            grid-column: span 1;
+        }
+        &:nth-child(4n+2){
+            grid-column: span 3;
+            color: $primary-color;
+        }
+        &:nth-child(4n+3){
+            grid-column: span 3;
+            color: $primary-color;
+        }
+        &:nth-child(4n+4){
+            grid-column: span 1;
+        }
+        
+    blockquote {
+            &:before{
+                content: open-quote;
+            }
+            &:after{
+                content: close-quote;
+            }
+        }
+    }
   }
